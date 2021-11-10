@@ -7,10 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication2.Models;
 
 namespace WebApplication2
 {
@@ -32,6 +34,13 @@ namespace WebApplication2
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication2", Version = "v1" });
             });
+            services.AddScoped<AppDbContext>();
+            services.AddMvc()
+                .AddNewtonsoftJson(
+                options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

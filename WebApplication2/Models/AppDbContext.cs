@@ -141,11 +141,11 @@ namespace WebApplication2.Models
 
                 entity.Property(e => e.ValorTotal).HasColumnType("decimal(18, 0)");
 
-                entity.HasOne(d => d.IdClienteNavigation)
-                    .WithMany(p => p.ReservaHotels)
-                    .HasForeignKey(d => d.IdCliente)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ReservaHo__Valor__2D27B809");
+                //entity.HasOne(d => d.IdClienteNavigation)
+                //    .WithMany(p => p.ReservaHotels)
+                //    .HasForeignKey(d => d.IdCliente)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK__ReservaHo__Valor__2D27B809");
 
                 entity.HasOne(d => d.IdQuartoNavigation)
                     .WithMany(p => p.ReservaHotels)
@@ -158,11 +158,11 @@ namespace WebApplication2.Models
             {
                 entity.ToTable("ReservaPassagem");
 
-                entity.HasOne(d => d.IdClienteNavigation)
-                    .WithMany(p => p.ReservaPassagems)
-                    .HasForeignKey(d => d.IdCliente)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ReservaPa__IdCli__37A5467C");
+                //entity.HasOne(d => d.IdClienteNavigation)
+                //    .WithMany(p => p.ReservaPassagems)
+                //    .HasForeignKey(d => d.IdCliente)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK__ReservaPa__IdCli__37A5467C");
 
                 entity.HasOne(d => d.IdVooNavigation)
                     .WithMany(p => p.ReservaPassagems)
