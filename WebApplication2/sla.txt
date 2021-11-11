@@ -1,0 +1,7 @@
+﻿Buscar voos onde IdAeroportoDestino = Id da tabela aeroporto onde atributo cidade é a de destino 
+E IdAeroportoOrigem = Id da tabela aeroporto onde atributo cidade é a de origem E
+DateTimePartida = DateTime da partida do user
+
+Opção de buscar por range de preço
+
+E SEMPRE ordenar asc

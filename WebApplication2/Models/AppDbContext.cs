@@ -24,12 +24,14 @@ namespace WebApplication2.Models
         public virtual DbSet<ReservaHotel> ReservaHotels { get; set; }
         public virtual DbSet<ReservaPassagem> ReservaPassagems { get; set; }
         public virtual DbSet<Voo> Voos { get; set; }
+        public object Aeroporto { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("data source=DESKTOP-88TVG63\\SQLEXPRESS2019;initial catalog=projetoAeroportoHotel;trusted_connection=true");
+                optionsBuilder.UseSqlServer("data source=SINSAON1666\\SQLEXPRESS;initial catalog=projetoAeroportoHotel;trusted_connection=true");
+                //"Breno": "Data Source=SINSAON1666\\SQLEXPRESS;Initial Catalog=Projeto_Loja_Sapatos;Integrated Security=True",
             }
         }
 
