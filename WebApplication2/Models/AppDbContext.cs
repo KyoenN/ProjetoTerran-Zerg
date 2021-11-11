@@ -30,6 +30,7 @@ namespace WebApplication2.Models
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer("data source=DESKTOP-88TVG63\\SQLEXPRESS2019;initial catalog=projetoAeroportoHotel;trusted_connection=true");
+                //optionsBuilder.UseSqlServer("Data Source=curraley.database.windows.net;Initial Catalog=lets;User ID=alunosinqia;Password=Aluno@001;Persist Security Info=True");
             }
         }
 
@@ -124,11 +125,11 @@ namespace WebApplication2.Models
 
                 entity.Property(e => e.ValorDiaria).HasColumnType("decimal(18, 0)");
 
-                entity.HasOne(d => d.IdHotelNavigation)
-                    .WithMany(p => p.Quartos)
-                    .HasForeignKey(d => d.IdHotel)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Quarto__ValorDia__2A4B4B5E");
+                //entity.HasOne(d => d.IdHotelNavigation)
+                //    .WithMany(p => p.Quartos)
+                //    .HasForeignKey(d => d.IdHotel)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK__Quarto__ValorDia__2A4B4B5E");
             });
 
             modelBuilder.Entity<ReservaHotel>(entity =>
@@ -147,11 +148,11 @@ namespace WebApplication2.Models
                 //    .OnDelete(DeleteBehavior.ClientSetNull)
                 //    .HasConstraintName("FK__ReservaHo__Valor__2D27B809");
 
-                entity.HasOne(d => d.IdQuartoNavigation)
-                    .WithMany(p => p.ReservaHotels)
-                    .HasForeignKey(d => d.IdQuarto)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ReservaHo__IdQua__2E1BDC42");
+                //entity.HasOne(d => d.IdQuartoNavigation)
+                //    .WithMany(p => p.ReservaHotels)
+                //    .HasForeignKey(d => d.IdQuarto)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK__ReservaHo__IdQua__2E1BDC42");
             });
 
             modelBuilder.Entity<ReservaPassagem>(entity =>

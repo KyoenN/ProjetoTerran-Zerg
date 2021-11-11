@@ -9,7 +9,7 @@ namespace WebApplication2.Models
     {
         public Quarto()
         {
-            ReservaHotels = new HashSet<ReservaHotel>();
+            //ReservaHotels = new HashSet<ReservaHotel>();
         }
 
         public int Id { get; set; }
@@ -20,7 +20,8 @@ namespace WebApplication2.Models
         public string Descrição { get; set; }
         public decimal ValorDiaria { get; set; }
 
-        public virtual Hotel IdHotelNavigation { get; set; }
-        public virtual ICollection<ReservaHotel> ReservaHotels { get; set; }
+        //public virtual Hotel IdHotelNavigation { get; set; }
+
+        //public virtual ICollection<ReservaHotel> ReservaHotels { get; set; }
     }
 }

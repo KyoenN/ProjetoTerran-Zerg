@@ -9,7 +9,7 @@ namespace WebApplication2.Models
     {
         public Hotel()
         {
-            Quartos = new HashSet<Quarto>();
+           // Quartos = new HashSet<Quarto>();
         }
 
         public int Id { get; set; }
@@ -20,6 +20,6 @@ namespace WebApplication2.Models
         public long Cnpj { get; set; }
         public int? Classificacao { get; set; }
 
-        public virtual ICollection<Quarto> Quartos { get; set; }
+        //public virtual ICollection<Quarto> Quartos { get; set; }
     }
 }

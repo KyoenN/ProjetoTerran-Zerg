@@ -14,7 +14,7 @@ namespace WebApplication2.Models
         public DateTime DtCheckout { get; set; }
         public decimal ValorTotal { get; set; }
 
-        public virtual Cliente IdClienteNavigation { get; set; }
-        public virtual Quarto IdQuartoNavigation { get; set; }
+        //public virtual Cliente IdClienteNavigation { get; set; }
+        //public virtual Quarto IdQuartoNavigation { get; set; }
     }
 }
