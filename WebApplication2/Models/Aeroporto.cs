@@ -9,8 +9,8 @@ namespace WebApplication2.Models
     {
         public Aeroporto()
         {
-            VooIdAeroportoDestinoNavigations = new HashSet<Voo>();
-            VooIdAeroportoOrigemNavigations = new HashSet<Voo>();
+            //VooIdAeroportoDestinoNavigations = new HashSet<Voo>();
+            //VooIdAeroportoOrigemNavigations = new HashSet<Voo>();
         }
 
         public int Id { get; set; }
@@ -18,7 +18,7 @@ namespace WebApplication2.Models
         public string Estado { get; set; }
         public string Cidade { get; set; }
 
-        public virtual ICollection<Voo> VooIdAeroportoDestinoNavigations { get; set; }
-        public virtual ICollection<Voo> VooIdAeroportoOrigemNavigations { get; set; }
+        //public virtual ICollection<Voo> VooIdAeroportoDestinoNavigations { get; set; }
+        //public virtual ICollection<Voo> VooIdAeroportoOrigemNavigations { get; set; }
     }
 }

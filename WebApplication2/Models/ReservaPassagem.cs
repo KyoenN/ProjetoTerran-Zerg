@@ -13,7 +13,7 @@ namespace WebApplication2.Models
         public int NumeroAssento { get; set; }
         public int BagagemExtra { get; set; }
 
-        public virtual Cliente IdClienteNavigation { get; set; }
-        public virtual Voo IdVooNavigation { get; set; }
+        //public virtual Cliente IdClienteNavigation { get; set; }
+        //public virtual Voo IdVooNavigation { get; set; }
     }
 }

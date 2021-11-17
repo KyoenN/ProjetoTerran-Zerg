@@ -20,18 +20,11 @@ namespace WebApplication2.Controllers
             _context = context;
         }
 
-        // GET: api/Clientes
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
-        {
-            return await _context.Clientes.ToListAsync();
-        }
-
         // GET: api/Clientes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Cliente>> GetCliente(int id)
+        [HttpGet("{cpf}")]
+        public async Task<ActionResult<Cliente>> GetCliente(long cpf)
         {
-            var cliente = await _context.Clientes.FindAsync(id);
+            var cliente = await _context.Clientes.Where(c => c.Cpf == cpf).FirstOrDefaultAsync();
 
             if (cliente == null)
             {
@@ -43,10 +36,10 @@ namespace WebApplication2.Controllers
 
         // PUT: api/Clientes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCliente(int id, Cliente cliente)
+        [HttpPut("{cpf}")]
+        public async Task<IActionResult> PutCliente(int cpf, Cliente cliente)
         {
-            if (id != cliente.Id)
+            if (cpf != cliente.Cpf)
             {
                 return BadRequest();
             }
@@ -59,7 +52,7 @@ namespace WebApplication2.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ClienteExists(id))
+                if (!ClienteExists(cpf))
                 {
                     return NotFound();
                 }
@@ -84,10 +77,10 @@ namespace WebApplication2.Controllers
         }
 
         // DELETE: api/Clientes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCliente(int id)
+        [HttpDelete("{cpf}")]
+        public async Task<IActionResult> DeleteCliente(long cpf)
         {
-            var cliente = await _context.Clientes.FindAsync(id);
+            var cliente = await _context.Clientes.FindAsync(cpf);
             if (cliente == null)
             {
                 return NotFound();
@@ -99,9 +92,9 @@ namespace WebApplication2.Controllers
             return NoContent();
         }
 
-        private bool ClienteExists(int id)
+        private bool ClienteExists(long cpf)
         {
-            return _context.Clientes.Any(e => e.Id == id);
+            return _context.Clientes.Any(e => e.Cpf == cpf);
         }
     }
 }

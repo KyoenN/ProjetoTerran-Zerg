@@ -11,17 +11,38 @@ namespace WebApplication2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VoosController : ControllerBase
+    public class Voos1Controller : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public VoosController(AppDbContext context)
+        public Voos1Controller(AppDbContext context)
         {
             _context = context;
         }
 
+        // GET: api/Voos1
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Voo>>> GetVoos()
+        {
+            return await _context.Voos.ToListAsync();
+        }
+
+        // GET: api/Voos1/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Voo>> GetVoo(int id)
+        {
+            var voo = await _context.Voos.FindAsync(id);
+
+            if (voo == null)
+            {
+                return NotFound();
+            }
+
+            return voo;
+        }
+
         [HttpGet("{cidadeOrigem}/{cidadeDestino}/{dataHoraPartida}")]
-        public async Task<ActionResult<IList<Voo>>> GetVoo(string cidadeOrigem, string cidadeDestino, 
+        public async Task<ActionResult<IEnumerable<Voo>>> GetVoosCondicoes(string cidadeOrigem, string cidadeDestino,
             DateTime dataHoraPartida)
         {
 
@@ -44,7 +65,7 @@ namespace WebApplication2.Controllers
                     }
                 }
             }
-            
+            IEnumerable<Voo> voosOrdenado = voosFiltrado.OrderBy(voosFiltrado => voosFiltrado.Valor);
             /*List<Voo> voosComOrigemCerta = voos.ForEach(v => v.IdAeroportoOrigem == aeroportosOrigem.ForEach(a => a.Id));
             voos.ForEach(voosComOrigemCerta.Add(Voo v => v.IdAeroportoOrigem == aeroportosOrigem.ForEach(a => a.Id)));
             List<Voo>sla = voos.ForEach(v => v.DateTimePartida == dataHoraPartida);
@@ -58,15 +79,15 @@ namespace WebApplication2.Controllers
 
          //FirstOrDefaultAsync(m => m.id == estoque.Id_Modelo);*/
 
-            if (voosFiltrado.First() == null)
+            if (voosOrdenado == null)
             {
                 return NotFound();
             }
 
-            return voosFiltrado;
+            return voosOrdenado.ToList();
         }
 
-        // PUT: api/Voos/5
+        // PUT: api/Voos1/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVoo(int id, Voo voo)
@@ -97,7 +118,7 @@ namespace WebApplication2.Controllers
             return NoContent();
         }
 
-        // POST: api/Voos
+        // POST: api/Voos1
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Voo>> PostVoo(Voo voo)
@@ -108,7 +129,7 @@ namespace WebApplication2.Controllers
             return CreatedAtAction("GetVoo", new { id = voo.Id }, voo);
         }
 
-        // DELETE: api/Voos/5
+        // DELETE: api/Voos1/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVoo(int id)
         {

@@ -31,7 +31,6 @@ namespace WebApplication2.Models
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer("data source=SINSAON1666\\SQLEXPRESS;initial catalog=projetoAeroportoHotel;trusted_connection=true");
-                //"Breno": "Data Source=SINSAON1666\\SQLEXPRESS;Initial Catalog=Projeto_Loja_Sapatos;Integrated Security=True",
             }
         }
 
@@ -166,11 +165,11 @@ namespace WebApplication2.Models
                 //    .OnDelete(DeleteBehavior.ClientSetNull)
                 //    .HasConstraintName("FK__ReservaPa__IdCli__37A5467C");
 
-                entity.HasOne(d => d.IdVooNavigation)
-                    .WithMany(p => p.ReservaPassagems)
-                    .HasForeignKey(d => d.IdVoo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ReservaPa__IdVoo__36B12243");
+                //entity.HasOne(d => d.IdVooNavigation)
+                //    .WithMany(p => p.ReservaPassagems)
+                //    .HasForeignKey(d => d.IdVoo)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK__ReservaPa__IdVoo__36B12243");
             });
 
             modelBuilder.Entity<Voo>(entity =>
@@ -183,17 +182,17 @@ namespace WebApplication2.Models
 
                 entity.Property(e => e.Valor).HasColumnType("decimal(18, 0)");
 
-                entity.HasOne(d => d.IdAeroportoDestinoNavigation)
-                    .WithMany(p => p.VooIdAeroportoDestinoNavigations)
-                    .HasForeignKey(d => d.IdAeroportoDestino)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Voo__IdAeroporto__33D4B598");
+                //entity.HasOne(d => d.IdAeroportoDestinoNavigation)
+                //    .WithMany(p => p.VooIdAeroportoDestinoNavigations)
+                //    .HasForeignKey(d => d.IdAeroportoDestino)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK__Voo__IdAeroporto__33D4B598");
 
-                entity.HasOne(d => d.IdAeroportoOrigemNavigation)
-                    .WithMany(p => p.VooIdAeroportoOrigemNavigations)
-                    .HasForeignKey(d => d.IdAeroportoOrigem)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Voo__IdAeroporto__32E0915F");
+                //entity.HasOne(d => d.IdAeroportoOrigemNavigation)
+                //    .WithMany(p => p.VooIdAeroportoOrigemNavigations)
+                //    .HasForeignKey(d => d.IdAeroportoOrigem)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK__Voo__IdAeroporto__32E0915F");
             });
 
             OnModelCreatingPartial(modelBuilder);

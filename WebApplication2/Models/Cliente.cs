@@ -9,7 +9,7 @@ namespace WebApplication2.Models
     {
         public Cliente()
         {
-           //ReservaHotels = new HashSet<ReservaHotel>();
+            //ReservaHotels = new HashSet<ReservaHotel>();
             //ReservaPassagems = new HashSet<ReservaPassagem>();
         }
 
