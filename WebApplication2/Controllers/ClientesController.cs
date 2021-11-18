@@ -37,7 +37,7 @@ namespace WebApplication2.Controllers
         // PUT: api/Clientes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{cpf}")]
-        public async Task<IActionResult> PutCliente(int cpf, Cliente cliente)
+        public async Task<IActionResult> PutCliente(long cpf, Cliente cliente)
         {
             if (cpf != cliente.Cpf)
             {
@@ -73,14 +73,14 @@ namespace WebApplication2.Controllers
             _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCliente", new { id = cliente.Id }, cliente);
+            return CreatedAtAction("GetCliente", new { cpf = cliente.Cpf }, cliente);
         }
 
         // DELETE: api/Clientes/5
         [HttpDelete("{cpf}")]
         public async Task<IActionResult> DeleteCliente(long cpf)
         {
-            var cliente = await _context.Clientes.FindAsync(cpf);
+            var cliente = await _context.Clientes.Where(c => c.Cpf == cpf).FirstOrDefaultAsync();
             if (cliente == null)
             {
                 return NotFound();
